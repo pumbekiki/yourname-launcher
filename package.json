@@ -1,0 +1,66 @@
+{
+  "name": "yourname-launcher",
+  "version": "1.0.0",
+  "description": "YourName Minecraft Launcher",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "install-deps": "npm install",
+    "build:backend": "python -m PyInstaller --noconfirm --clean --onefile --name yourname_launcher_backend --distpath build/backend-dist --workpath build/backend-work --specpath build/spec --hidden-import minecraft_launcher_lib --hidden-import optipy --hidden-import requests --hidden-import urllib3 --collect-all minecraft_launcher_lib --collect-all requests --collect-all urllib3 --collect-all optipy backend/server.py",
+    "build:win": "npm run build:backend && electron-builder --win dir",
+    "build:portable": "npm run build:backend && electron-builder --win portable",
+    "build:installer": "npm run build:backend && electron-builder --win nsis"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.yourname.launcher",
+    "productName": "YourName Launcher",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "1.ico",
+      "1.png",
+      "main.js",
+      "preload.js",
+      "public/**/*",
+      "backend/**/*",
+      "CLEAR_LAUNCHER_CACHE.bat",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/backend-dist/yourname_launcher_backend.exe",
+        "to": "backend/yourname_launcher_backend.exe"
+      },
+      {
+        "from": "PLauncher-main/src/bridge.jar",
+        "to": "bridge/bridge.jar"
+      }
+    ],
+    "win": {
+      "icon": "1.ico",
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "YourName Launcher",
+      "artifactName": "YourName-Launcher-Setup-${version}.${ext}"
+    }
+  }
+}

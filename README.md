@@ -1,4 +1,4 @@
-# yourname-launcher
+﻿# YourName Launcher
 
 Современный лаунчер Minecraft для Windows с аккуратным темным интерфейсом, автоматической установкой игры, поддержкой популярных загрузчиков и встроенной системой логов.
 
@@ -53,7 +53,10 @@ yourname-launcher/
 |-- main.js                    # Electron main process
 |-- preload.js                 # Безопасный мост между UI и Electron
 |-- package.json               # Скрипты и конфигурация сборки
+|-- 1.png                      # Исходная иконка приложения
+|-- 1.ico                      # Иконка для Windows / .exe
 |-- BUILD_RELEASE.bat          # Быстрая сборка релиза
+|-- CLEAR_LAUNCHER_CACHE.bat   # Очистка кэша лаунчера
 `-- README.md
 ```
 
@@ -98,4 +101,4 @@ npm run build:installer
 
 ## Автор
 
-Создатель: [пумбекики](https://t.me/amqsi)
+Создатель: [@pumbekiki](https://t.me/pumbekiki)
