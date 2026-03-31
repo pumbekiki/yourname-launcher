@@ -101,4 +101,4 @@ npm run build:installer
 
 ## Автор
 
-Создатель: [@pumbekiki](https://t.me/pumbekiki)
+Создатель: [пумбекики](https://t.me/amqsi)
